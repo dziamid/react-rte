@@ -20,12 +20,10 @@ var loaders = [
 
 module.exports = [{
   entry: {
-    demo: './src/demo.js',
+    app: './src/index.js',
   },
   output: {
-    path: path.join(__dirname, 'assets/dist'),
-    publicPath: '/',
-    filename: '[name].js',
+    filename: 'bundle.js'
   },
   module: {loaders: loaders},
 }];
