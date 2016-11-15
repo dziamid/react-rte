@@ -1,9 +1,9 @@
 /* @flow */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import cx from 'classnames';
 import autobind from 'class-autobind';
-
+import IconButton from 'material-ui/IconButton';
 import styles from './Button.css';
 
 type EventHandler = (event: Event) => any;
@@ -20,29 +20,44 @@ type Props = {
 export default class Button extends Component {
   props: Props;
 
+  static defaultProps = {
+    onMouseDown: () => {},
+  };
+
   constructor() {
     super(...arguments);
     autobind(this);
   }
 
+
+  handleMouseDown(event: Event) {
+    if (this.props.focusOnClick === false) {
+      event.preventDefault();
+    }
+
+    this.props.onMouseDown();
+  }
+
   render() {
-    let {props} = this;
-    let {className, isDisabled, focusOnClick, formSubmit, ...otherProps} = props;
-    className = cx(className, styles.root);
-    let onMouseDown = (focusOnClick === false) ? this._onMouseDownPreventDefault : props.onMouseDown;
-    let type = formSubmit ? 'submit' : 'button';
+    const {
+        className,
+        isDisabled,
+        focusOnClick,
+        formSubmit,
+        children,
+        ...otherProps,
+    } = this.props;
+
     return (
-      <button type={type} {...otherProps} onMouseDown={onMouseDown} className={className} disabled={isDisabled}>
-        {props.children}
-      </button>
+        <IconButton
+            className={cx(className, styles.root)}
+            disabled={isDisabled}
+            type={this.props.formSubmit ? 'submit' : 'button'}
+            {...otherProps}
+        >
+          {children}
+        </IconButton>
     );
   }
 
-  _onMouseDownPreventDefault(event: Event) {
-    event.preventDefault();
-    let {onMouseDown} = this.props;
-    if (onMouseDown != null) {
-      onMouseDown(event);
-    }
-  }
 }

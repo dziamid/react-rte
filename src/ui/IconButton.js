@@ -1,11 +1,34 @@
 /* @flow */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import cx from 'classnames';
 import Button from './Button';
-import ButtonWrap from './ButtonWrap';
+import IconBold from 'material-ui/svg-icons/editor/format-bold';
+import IconItalic from 'material-ui/svg-icons/editor/format-italic';
+import IconStrikethrough from 'material-ui/svg-icons/editor/format-strikethrough';
+import IconCode from 'material-ui/svg-icons/action/code';
+import IconUnderline from 'material-ui/svg-icons/editor/format-underlined';
+import IconBulleted from 'material-ui/svg-icons/editor/format-list-bulleted';
+import IconNumbered from 'material-ui/svg-icons/editor/format-list-numbered';
+import IconQuote from 'material-ui/svg-icons/editor/format-quote';
+import IconUndo from 'material-ui/svg-icons/content/undo';
+import IconRedo from 'material-ui/svg-icons/content/redo';
 
 import styles from './IconButton.css';
+
+const icons = {
+  bold: IconBold,
+  italic: IconItalic,
+  underline: IconUnderline,
+  strikethrough: IconStrikethrough,
+  code: IconCode,
+  'unordered-list-item': IconBulleted,
+  'ordered-list-item': IconNumbered,
+  blockquote: IconQuote,
+  undo: IconUndo,
+  redo: IconRedo,
+};
+
 
 type Props = {
   iconName: string;
@@ -19,20 +42,31 @@ export default class IconButton extends Component {
   props: Props;
 
   render() {
-    let {props} = this;
-    let {className, iconName, label, children, isActive, ...otherProps} = props;
-    className = cx(className, {
+    const {
+        className,
+        iconName,
+        label,
+        isActive,
+        ...otherProps,
+    } = this.props;
+
+    const Icon = icons[iconName] || (() => (
+            <span className={styles['icon-' + iconName]} />
+        ));
+
+    const rootClassName = cx(className, {
       [styles.root]: true,
       [styles.isActive]: isActive,
     });
+
     return (
-      <ButtonWrap>
-        <Button {...otherProps} title={label} className={className}>
-          <span className={styles['icon-' + iconName]} />
-          {/* TODO: add text label here with aria-hidden */}
+        <Button
+            className={rootClassName}
+            title={label}
+            {...otherProps}
+        >
+          <Icon />
         </Button>
-        {children}
-      </ButtonWrap>
     );
   }
 }
