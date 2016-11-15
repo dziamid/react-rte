@@ -39,7 +39,13 @@ export const BLOCK_TYPE_BUTTONS: StyleConfigList = [
 ];
 
 let EditorToolbarConfig: ToolbarConfig = {
-  display: ['INLINE_STYLE_BUTTONS', 'BLOCK_TYPE_BUTTONS', 'LINK_BUTTONS', 'BLOCK_TYPE_DROPDOWN', 'HISTORY_BUTTONS'],
+  display: [
+      'INLINE_STYLE_BUTTONS',
+    'BLOCK_TYPE_BUTTONS',
+    // 'LINK_BUTTONS', //todo: fix broken buttons
+    // 'BLOCK_TYPE_DROPDOWN', //todo: use mui SelectField
+    'HISTORY_BUTTONS'
+  ],
   INLINE_STYLE_BUTTONS,
   BLOCK_TYPE_DROPDOWN,
   BLOCK_TYPE_BUTTONS,

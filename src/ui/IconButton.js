@@ -13,6 +13,7 @@ import IconNumbered from 'material-ui/svg-icons/editor/format-list-numbered';
 import IconQuote from 'material-ui/svg-icons/editor/format-quote';
 import IconUndo from 'material-ui/svg-icons/content/undo';
 import IconRedo from 'material-ui/svg-icons/content/redo';
+import IconLink from 'material-ui/svg-icons/content/link';
 
 import styles from './IconButton.css';
 
@@ -27,6 +28,7 @@ const icons = {
   blockquote: IconQuote,
   undo: IconUndo,
   redo: IconRedo,
+  link: IconLink,
 };
 
 
