@@ -58,7 +58,7 @@ function createPackageFile() {
     } = packageData;
 
     const minimalPackage = {
-      name,
+      name: 'react-rte-material',
       author,
       version,
       description,
