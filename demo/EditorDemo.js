@@ -1,10 +1,10 @@
 /* @flow */
 import React, {Component} from 'react';
-import RichTextEditor, {createEmptyValue} from './RichTextEditor';
+import RichTextEditor, {createEmptyValue} from '../src/RichTextEditor';
 import {convertToRaw} from 'draft-js';
 import autobind from 'class-autobind';
 
-import type {EditorValue} from './RichTextEditor';
+import type {EditorValue} from '../src/RichTextEditor';
 
 type Props = {};
 type State = {

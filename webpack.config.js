@@ -15,15 +15,16 @@ var loaders = [
       'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
     ],
   },
-  {test: /\.global\.css$/, loader: 'style!raw'},
+  { test: /\.global\.css$/, loader: 'style!raw' },
 ];
 
 module.exports = [{
   entry: {
-    app: './src/index.js',
+    demo: './demo/index.js',
   },
   output: {
+    path: path.join(__dirname, '/'),
     filename: 'bundle.js'
   },
-  module: {loaders: loaders},
+  module: { loaders: loaders },
 }];
