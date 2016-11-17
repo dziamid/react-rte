@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 import autobind from 'class-autobind';
 import IconButton from 'material-ui/IconButton';
-import styles from './Button.css';
+// import styles from './Button.css';
+const styles = {};
 
 type EventHandler = (event: Event) => any;
 

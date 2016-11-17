@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 import autobind from 'class-autobind';
 import cx from 'classnames';
 
-import styles from './Dropdown.css';
+// import styles from './Dropdown.css';
+const styles = {};
 
 type Choice = {
   label: string;
