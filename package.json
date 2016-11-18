@@ -1,18 +1,18 @@
 {
   "name": "react-rte-material-build",
   "private": true,
-  "version": "0.12.1",
+  "version": "0.12.3",
   "description": "React Rich Text Editor with Material-UI components",
   "main": "src/index.js",
   "scripts": {
     "prebuild": "npm run clean:build",
     "clean:build": "rimraf build",
-    "build": "npm run build:copy-files && npm run build:lib",
+    "build": "npm run build:copy-files && npm run build:webpack",
     "build:copy-files": "babel-node ./scripts/copy-files.js",
-    "build:lib": "rimraf lib && babel src --ignore \"_*\" --out-dir ./build",
+    "build:webpack": "babel-node ./node_modules/.bin/webpack",
     "lint": "eslint --max-warnings 0 .",
     "typecheck": "flow",
-    "start": "webpack-dev-server --inline",
+    "start": "babel-node ./node_modules/.bin/webpack-dev-server --config webpack.demo.config.js --inline",
     "test": "npm run lint && npm run typecheck && npm run test-src",
     "test-src": "mocha \"src/**/__tests__/*.js\""
   },

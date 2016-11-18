@@ -2,3 +2,4 @@ _*
 !__tests__
 /node_modules
 /build
+npm-debug.log

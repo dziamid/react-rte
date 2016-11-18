@@ -1,7 +1,7 @@
 /*eslint-env node */
-var path = require('path');
+const path = require('path');
 
-var loaders = [
+const loaders = [
   {
     test: /\.js$/,
     loader: 'babel',
@@ -18,13 +18,17 @@ var loaders = [
   { test: /\.global\.css$/, loader: 'style!raw' },
 ];
 
-module.exports = [{
+const config = {
   entry: {
-    demo: './demo/index.js',
+    demo: path.join(__dirname, 'src/RichTextEditor.js'),
   },
   output: {
-    path: path.join(__dirname, '/'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'build/'),
+    filename: 'react-rte-material.js'
   },
-  module: { loaders: loaders },
-}];
+  module: {
+    loaders,
+  },
+};
+
+export default config;
